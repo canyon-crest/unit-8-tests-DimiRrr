@@ -46,13 +46,11 @@ public class Unit8 {
     // 4. Method to reverse the rows of the 2D array
     // Instructions: Reverse the rows of the 2D array (e.g., the first row becomes the last, etc.).
     public static void reverseRows(int[][] array) {
-    	int [][] sameSize = new int[array.length][array[0].length]; 
-        for (int i = array.length; i <= 0; i--) {
-        	for (int j = 0; j < array[i].length; j++) {
-        		sameSize[i-array.length-1][j] = array[i][j]; 
-        	}
-        }
-        array = sameSize;
+    	for(int i = 0; i < array.length/2; i++) {
+    		int[] temp = array[i];
+    		array[i] = array[array.length - i - 1];
+    		array[array.length - i - 1] = temp;
+    	}
     }
 
     // 5. Method to transpose a 2D array (swap rows and columns)
@@ -61,17 +59,22 @@ public class Unit8 {
     	int [][] sameRevSize = new int[array[0].length][array.length]; 
     	for (int i = 0; i < array.length; i++) {
         	for (int j = 0; j < array[i].length; j++) {
-        		sameRevSize[i][j] = array[j][i]; 
+        		sameRevSize[j][i] = array[i][j]; 
         	}
         }
-        array = sameRevSize;
         return sameRevSize;  // Placeholder return value
     }
 
     // 6. Method to fill a 2D array with random integers
     // Instructions: Create a 2D array of size numRows x numCols and fill it with random integers between minimum and max.
     public static int[][] fillWithRandom(int min, int max, int numRows, int numCols) {
+    	int [][] array = new int [numRows][numCols];
+    	for(int i = 0; i < array.length; i++) {
+    		for(int j = 0; j < array[i].length; j++) {
+    			array[i][j] = (int)(Math.random()*max - min) + min;
+    		}
+    	}
         // TODO: Implement this method
-        return null;  // Placeholder return value
+        return array;  // Placeholder return value
     }
 };
